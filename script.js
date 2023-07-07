@@ -24,7 +24,7 @@ function playRound(playerSelection, computerSelection) {
   //Repeat for both?
 
   if (finalPlayerSelect === computerSelection) {
-    return `You both selected ${finalPlayerSelect }! Tie!`
+    return `You both selected ${finalPlayerSelect }! Tie!`;
   }
 
   else if (finalPlayerSelect  === "Rock" && computerSelection === "Scissors") {
@@ -67,15 +67,28 @@ function game() {
   let computerScore = 0;
 
   for (let i = 0; i < 5; i ++) {
-    prompt()
+    let playerSelection = prompt("Type in rock, paper or scissors to make your move here: ");
+    let computerSelection = getComputerChoice();
+    console.log(`The computer chose ${computerSelection}`);
+    let result = playRound(playerSelection, computerSelection);
+    console.log(result);
+    
+    if (result.includes("win")) {
+      playerScore += 1;
+    } else if (result.includes("lose")) {
+      computerScore +=1;
+    }
+  }
+
+  if (playerScore > computerScore) {
+    console.log(`You won ${playerScore} rounds while the computer won ${computerScore} rounds!
+    You win the game!`);
+  } else if (playerScore === computerScore) {
+    console.log(`You won ${playerScore} rounds while the computer won ${computerScore} rounds!
+    That's a tie!`);
+  } else if (playerScore < computerScore) {
+    console.log(`You won ${playerScore} rounds while the computer won ${computerScore} rounds!
+    Tie game!`)
   }
 }
 
-
-
-
- //announce rules of game. Player move. 
- //console.log("Player move: ");
-  
-
- //Collect player input (case-insensitive).
